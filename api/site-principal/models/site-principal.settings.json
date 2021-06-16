@@ -1,0 +1,34 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_principals",
+  "info": {
+    "name": "Site Principal",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page.header",
+      "required": true
+    },
+    "quemSomos": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page.quem-somos",
+      "required": true
+    },
+    "nossosServicos": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page.nossos-servicos",
+      "required": true
+    }
+  }
+}

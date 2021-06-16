@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_page_nossos_servicos",
+  "info": {
+    "name": "nossosServicos",
+    "icon": "business-time"
+  },
+  "options": {},
+  "attributes": {
+    "servico": {
+      "type": "component",
+      "repeatable": true,
+      "component": "page.servico"
+    }
+  }
+}

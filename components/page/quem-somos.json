@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_page_quem_somos",
+  "info": {
+    "name": "Quem Somos",
+    "icon": "info"
+  },
+  "options": {},
+  "attributes": {
+    "textos": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page.textos"
+    },
+    "video": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page.video",
+      "required": true
+    }
+  }
+}

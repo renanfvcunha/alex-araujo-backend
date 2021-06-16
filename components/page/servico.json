@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_page_servicos",
+  "info": {
+    "name": "servico",
+    "icon": "network-wired",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "icone": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "servico": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

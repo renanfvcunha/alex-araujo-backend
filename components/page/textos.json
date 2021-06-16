@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_page_textos",
+  "info": {
+    "name": "textos",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true,
+      "default": "Quem Somos"
+    },
+    "subtitulo": {
+      "type": "string",
+      "default": "Nossa História",
+      "required": true
+    },
+    "texto": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

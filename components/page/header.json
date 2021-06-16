@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_page_headers",
+  "info": {
+    "name": "header",
+    "icon": "heading"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "default": "Alexandre Araújo",
+      "required": true
+    },
+    "subtitulo": {
+      "type": "string",
+      "required": true,
+      "default": "Consultoria e Contabilidade"
+    },
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    }
+  }
+}
