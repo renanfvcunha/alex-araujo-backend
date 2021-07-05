@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_page_contatoes",
+  "info": {
+    "name": "contato",
+    "icon": "phone-alt"
+  },
+  "options": {},
+  "attributes": {
+    "endereco": {
+      "type": "string",
+      "required": true
+    },
+    "telefone": {
+      "type": "string",
+      "required": true,
+      "regex": "\\d"
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    }
+  }
+}
