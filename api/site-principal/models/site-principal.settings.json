@@ -29,6 +29,11 @@
       "repeatable": false,
       "component": "page.nossos-servicos",
       "required": true
+    },
+    "menu": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page.menu"
     }
   }
 }

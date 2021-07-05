@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_page_menus",
+  "info": {
+    "name": "menu",
+    "icon": "server",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "imagem": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "whatsapp": {
+      "type": "string",
+      "regex": "\\d"
+    }
+  }
+}
