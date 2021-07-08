@@ -12,10 +12,7 @@
       "component": "page.textos"
     },
     "video": {
-      "type": "component",
-      "repeatable": false,
-      "component": "page.video",
-      "required": true
+      "type": "text"
     }
   }
 }
