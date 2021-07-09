@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/clientes/findbytoken",
+      "handler": "clientes.findByToken",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/clientes/:id",
       "handler": "clientes.findOne",
       "config": {

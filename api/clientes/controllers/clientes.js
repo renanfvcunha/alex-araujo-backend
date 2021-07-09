@@ -11,16 +11,45 @@ module.exports = {
   async auth(ctx) {
     const { cnpj, senha } = ctx.request.body
 
-    const entity = await strapi.services.clientes.findOne({ cnpj, senha });
-
-    if (!entity) {
-      return ctx.send({ err: 'Usuário E/Ou Senha Incorreto(s)' }, 401)
-    }
-
-    const token = jwt.sign({ id: entity.id }, process.env.CLIENT_SECRET, {
-      expiresIn: '1d'
-    })
+    try {
+      const entity = await strapi.services.clientes.findOne({ cnpj, senha });
   
-    return ctx.send({ token, entity: sanitizeEntity(entity, { model: strapi.models.clientes }) })
+      if (!entity) {
+        return ctx.send({ err: 'Usuário E/Ou Senha Incorreto(s)' }, 401)
+      }
+  
+      const token = jwt.sign({ id: entity.id }, process.env.CLIENT_SECRET, {
+        expiresIn: '1d'
+      })
+    
+      return ctx.send({ token, entity: sanitizeEntity(entity, { model: strapi.models.clientes }) })
+    } catch (err) {
+      return ctx.send({ err: 'Erro Interno do Servidor' }, 500)
+    }
+  },
+  async findByToken(ctx) {
+    // Criar senha criptografada (bcrypt)
+    // Alterar schema graphql
+
+    const token = ctx.headers['x-access-token'];
+
+    try {
+      const decoded = jwt.verify(token, process.env.CLIENT_SECRET)
+
+      if (decoded && decoded.id) {
+        const entity = await strapi.services.clientes.findOne({ id: decoded.id });
+        return sanitizeEntity(entity, { model: strapi.models.clientes });
+      }
+    } catch (err) {
+      if (err.name === 'JsonWebTokenError') {
+        return ctx.send({ err: 'Token Inválido!' }, 401)
+      }
+
+      if (err.name === 'TokenExpiredError') {
+        return ctx.send({ err: 'Token Expirado! Faça login novamente.' }, 401)
+      }
+
+      return ctx.send({ err: 'Erro Interno do Servidor' }, 500)
+    }
   }
 };
