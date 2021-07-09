@@ -44,6 +44,10 @@
     "telefone": {
       "type": "string",
       "regex": "\\d"
+    },
+    "arquivos": {
+      "via": "cliente",
+      "collection": "arquivos"
     }
   }
 }

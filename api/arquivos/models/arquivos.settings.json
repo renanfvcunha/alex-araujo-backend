@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "arquivos",
+  "info": {
+    "name": "Arquivos"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "arquivo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "cliente": {
+      "model": "clientes",
+      "via": "arquivos"
+    },
+    "tipos_de_arquivo": {
+      "model": "tipos-de-arquivo",
+      "via": "arquivos"
+    }
+  }
+}

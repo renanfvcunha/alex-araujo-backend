@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tipos-de-arquivos",
+      "handler": "tipos-de-arquivo.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tipos-de-arquivos/count",
+      "handler": "tipos-de-arquivo.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tipos-de-arquivos/:id",
+      "handler": "tipos-de-arquivo.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tipos-de-arquivos",
+      "handler": "tipos-de-arquivo.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tipos-de-arquivos/:id",
+      "handler": "tipos-de-arquivo.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tipos-de-arquivos/:id",
+      "handler": "tipos-de-arquivo.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

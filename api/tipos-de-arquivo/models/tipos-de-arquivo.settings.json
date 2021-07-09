@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tipos_de_arquivos",
+  "info": {
+    "name": "Tipos de Arquivo"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "arquivos": {
+      "via": "tipos_de_arquivo",
+      "collection": "arquivos"
+    }
+  }
+}

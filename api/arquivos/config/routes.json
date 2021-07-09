@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/arquivos",
+      "handler": "arquivos.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/arquivos/count",
+      "handler": "arquivos.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/arquivos/:id",
+      "handler": "arquivos.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/arquivos",
+      "handler": "arquivos.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/arquivos/:id",
+      "handler": "arquivos.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/arquivos/:id",
+      "handler": "arquivos.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
