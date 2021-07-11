@@ -1,7 +1,7 @@
 'use strict';
 const { sanitizeEntity } = require('strapi-utils')
 const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
@@ -11,6 +11,10 @@ const bcrypt = require('bcryptjs')
 module.exports = {
   async auth(ctx) {
     const { cnpj, senha } = ctx.request.body
+
+    if (!cnpj || !senha) {
+      return ctx.send({ err: 'Verifique se os campos estão preenchidos' }, 400)
+    }
 
     try {
       const entity = await strapi.services.clientes.findOne({ cnpj });
@@ -35,31 +39,12 @@ module.exports = {
     }
   },
   async findByToken(ctx) {
-    // Alterar schema graphql
-
     const token = ctx.headers['x-access-token'];
 
     if (!token) {
-      return ctx.send({ err: 'Token Não Enviado!' }, 401)
+      throw new Error('Token Não Enviado!')
     }
 
-    try {
-      const decoded = jwt.verify(token, process.env.CLIENT_SECRET)
-
-      if (decoded && decoded.id) {
-        const entity = await strapi.services.clientes.findOne({ id: decoded.id });
-        return sanitizeEntity(entity, { model: strapi.models.clientes });
-      }
-    } catch (err) {
-      if (err.name === 'JsonWebTokenError') {
-        return ctx.send({ err: 'Token Inválido!' }, 401)
-      }
-
-      if (err.name === 'TokenExpiredError') {
-        return ctx.send({ err: 'Token Expirado! Faça login novamente.' }, 401)
-      }
-
-      return ctx.send({ err: 'Erro Interno do Servidor' }, 500)
-    }
+    return await strapi.services.clientes.findByToken(token)
   }
 };
