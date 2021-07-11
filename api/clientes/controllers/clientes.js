@@ -13,6 +13,7 @@ module.exports = {
     const { cnpj, senha } = ctx.request.body
 
     if (!cnpj || !senha) {
+      throw new Error('Verifique se os campos estão preenchidos')
       return ctx.send({ err: 'Verifique se os campos estão preenchidos' }, 400)
     }
 
@@ -20,12 +21,14 @@ module.exports = {
       const entity = await strapi.services.clientes.findOne({ cnpj });
   
       if (!entity) {
+        throw new Error('Usuário Incorreto')
         return ctx.send({ err: 'Usuário E/Ou Senha Incorreto(s)' }, 401)
       }
 
       const pass = await bcrypt.compare(senha, entity.senha)
 
       if (!pass) {
+        throw new Error('Senha Incorreta')
         return ctx.send({ err: 'Usuário E/Ou Senha Incorreto(s)' }, 401)
       }
   
