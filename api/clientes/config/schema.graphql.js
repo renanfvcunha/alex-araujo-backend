@@ -3,10 +3,14 @@ module.exports = {
     input authInput {
       cnpj: String!
       senha: String!
+    },
+    type Auth {
+      token: String!,
+      cliente: Clientes!
     }
   `,
   query: 'findByToken: Clientes!',
-  mutation: `auth(input: authInput!): Clientes!`,
+  mutation: `auth(input: authInput!): Auth`,
   resolver: {
     Query: {
       findByToken: {
@@ -19,7 +23,8 @@ module.exports = {
         description: 'Authenticate client and return access token',
         resolverOf: 'application::clientes.clientes.auth',
         resolver: async (obj, options, { context }) => {
-          return await strapi.controllers.clientes.auth(context);
+          const ctx = {...context, options}
+          return await strapi.controllers.clientes.auth(ctx);
         },
       }
     }
