@@ -5,8 +5,7 @@ module.exports = {
       senha: String!
     },
     type Auth {
-      token: String!,
-      cliente: Clientes!
+      token: String!
     }
   `,
   query: 'findByToken: Clientes!',

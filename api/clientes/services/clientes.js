@@ -14,13 +14,13 @@ module.exports = {
       const entity = await strapi.services.clientes.findOne({ cnpj });
   
       if (!entity) {
-        throw new Error('Usuário E/Ou Senha Incorreto(s)')
+        throw new Error('userOrPassMismatch')
       }
 
       const pass = await bcrypt.compare(senha, entity.senha)
 
       if (!pass) {
-        throw new Error('Usuário E/Ou Senha Incorreto(s)')
+        throw new Error('userOrPassMismatch')
       }
   
       const token = jwt.sign({ id: entity.id }, process.env.CLIENT_SECRET, {
@@ -42,11 +42,11 @@ module.exports = {
       }
     } catch (err) {
       if (err.name === 'JsonWebTokenError') {
-        throw new Error('Token Inválido!')
+        throw new Error('invalidToken')
       }
 
       if (err.name === 'TokenExpiredError') {
-        throw new Error('Token Expirado! Faça login novamente.')
+        throw new Error('expiredToken')
       }
 
       throw err

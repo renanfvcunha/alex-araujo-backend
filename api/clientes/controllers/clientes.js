@@ -10,7 +10,7 @@ module.exports = {
     const { cnpj, senha } = ctx.options.input
 
     if (!cnpj || !senha) {
-      throw new Error('Verifique se os campos estão preenchidos')
+      throw new Error('fieldsMismatch')
     }
 
     return await strapi.services.clientes.auth(cnpj, senha)
@@ -19,7 +19,7 @@ module.exports = {
     const token = ctx.headers['x-access-token'];
 
     if (!token) {
-      throw new Error('Token Não Enviado!')
+      throw new Error('notSentToken')
     }
 
     return await strapi.services.clientes.findByToken(token)
